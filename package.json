@@ -1,0 +1,23 @@
+{
+  "name": "game-hub",
+  "version": "0.0.1",
+  "description": "Hub for building out and hosting games under the AMScripting umbrella",
+  "main": "src/index.html",
+  "scripts": {
+    "build": "",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AMScripting/game-hub.git"
+  },
+  "contributors": [
+    "Austin Murdock <admwx7@gmail.com>",
+    "Michael Stramel <m.stramel89@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AMScripting/game-hub/issues"
+  },
+  "homepage": "https://github.com/AMScripting/game-hub#readme"
+}
