@@ -4,8 +4,7 @@
   "description": "Hub for building out and hosting games under the AMScripting umbrella",
   "main": "src/index.html",
   "scripts": {
-    "build": "",
-    "test": ""
+    "build": ""
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,86 @@
+{
+  "name": "game-hub",
+  "description": "Webcomponent game-hub following open-wc recommendations",
+  "license": "MIT",
+  "author": "game-hub",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "eslint --ext .ts,.html . --ignore-path .gitignore && prettier \"**/*.ts\" --check --ignore-path .gitignore",
+    "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
+    "test": "wtr --coverage",
+    "test:watch": "wtr --watch",
+    "build": "rimraf dist && tsc && rollup -c rollup.config.js && npm run analyze -- --exclude dist",
+    "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
+    "analyze": "cem analyze --litelement",
+    "start": "wds --hmr"
+  },
+  "dependencies": {
+    "@lit/reactive-element": "^1.0.2",
+    "lit": "^2.0"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.4",
+    "@open-wc/building-rollup": "^2.0",
+    "@open-wc/dev-server-hmr": "^0.1",
+    "@open-wc/eslint-config": "^7.0",
+    "@open-wc/testing": "^3.0",
+    "@rollup/plugin-node-resolve": "^13.0",
+    "@typescript-eslint/eslint-plugin": "^5.6",
+    "@typescript-eslint/parser": "^5.6",
+    "@web/dev-server": "^0.1",
+    "@web/dev-server-esbuild": "^0.2",
+    "@web/dev-server-import-maps": "^0.0.6",
+    "@web/rollup-plugin-html": "^1.10",
+    "@web/rollup-plugin-import-meta-assets": "^1.0",
+    "@web/test-runner": "^0.13",
+    "@web/test-runner-playwright": "^0.8",
+    "babel-plugin-template-html-minifier": "^4.1",
+    "eslint": "^7.32",
+    "eslint-config-prettier": "^8.3",
+    "eslint-plugin-lit-a11y": "^2.2",
+    "husky": "^4.3",
+    "lint-staged": "^10.5",
+    "prettier": "^2.4",
+    "rimraf": "^3.0",
+    "rollup": "^2.60",
+    "rollup-plugin-terser": "^7.0",
+    "rollup-plugin-workbox": "^6.2",
+    "tslib": "^2.3",
+    "typescript": "^4.5"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "@open-wc",
+      "prettier",
+      "plugin:lit-a11y/recommended"
+    ],
+    "plugins": [
+      "@typescript-eslint",
+      "lit-a11y"
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": ["error"],
+      "import/no-unresolved": "off",
+      "import/extensions": "off",
+      "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.ts", "**/*.config.mjs"] }]
+    }
+  },
+  "prettier": {
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "customElements": "custom-elements.json"
+}

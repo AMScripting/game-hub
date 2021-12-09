@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "ESNext",
+    "experimentalDecorators": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "outDir": "lib",
     "sourceMap": true,
-    "strict": true,
-    "target": "es2017"
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "target": "ESNext"
   },
   "compileOnSave": true,
-  "include": [
-    "src"
-  ]
+  "include": ["src/**/*.ts"]
 }
