@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@lit/reactive-element": "^1.0.2",
+    "idb": "^7.0.0",
     "lit": "^2.0"
   },
   "devDependencies": {
@@ -61,10 +62,20 @@
     ],
     "rules": {
       "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": ["error"],
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
       "import/no-unresolved": "off",
       "import/extensions": "off",
-      "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.ts", "**/*.config.mjs"] }]
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": [
+            "**/*.test.ts",
+            "**/*.config.mjs"
+          ]
+        }
+      ]
     }
   },
   "prettier": {
