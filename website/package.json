@@ -61,6 +61,7 @@
       "lit-a11y"
     ],
     "rules": {
+      "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": [
         "error"

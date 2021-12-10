@@ -17,10 +17,10 @@
     "useDefineForClassFields": false,
     "baseUrl": "src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@schemas/*": ["schemas/*"],
-      "@services/*": ["services/*"],
-      "@workers/*": ["workers/*"]
+      // "@components/*": ["components/*"],
+      // "@schemas/*": ["schemas/*"],
+      // "@services/*": ["services/*"],
+      // "@workers/*": ["workers/*"]
     }
   },
   "include": ["**/*.ts"]
