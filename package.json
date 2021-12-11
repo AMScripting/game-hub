@@ -2,10 +2,6 @@
   "name": "game-hub",
   "version": "0.0.1",
   "description": "Hub for building out and hosting games under the AMScripting umbrella",
-  "main": "src/index.html",
-  "scripts": {
-    "build": ""
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AMScripting/game-hub.git"
