@@ -12,7 +12,7 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
   nodeResolve: { browser: true, moduleDirectories: ['node_modules'], extensions: ['.mjs', '.js', '.ts', '.json'] },
   appIndex: 'index.html',
   plugins: [
-    esbuildPlugin({ ts: true, json: true, target: 'auto' }),
+    esbuildPlugin({ js: true, ts: true, json: true, target: 'esnext' }),
     hmr && hmrPlugin({
       include: ['src/**/*'],
       presets: [presets.lit],

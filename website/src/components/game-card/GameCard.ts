@@ -52,15 +52,15 @@ export class GameCard extends LitElement {
     const { description, logo, route, title } = this.game;
 
     return html`
-      <div class="image-container">
-        <img src=${logo} alt=${title} />
-      </div>
-      <div class="card-body">
-        <a href="${route}" class="block mt-2">
+      <a href="${route}" class="block mt-2">
+        <div class="image-container">
+          <img src=${logo} alt=${title} />
+        </div>
+        <div class="card-body">
           <p class="game-title">${title}</p>
           <p class="game-description">${description}</p>
-        </a>
-      </div>
+        </div>
+      </a>
     `;
   }
 }

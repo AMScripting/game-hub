@@ -9,10 +9,13 @@
     "format": "eslint --ext .ts,.html . --fix --ignore-path .gitignore && prettier \"**/*.ts\" --write --ignore-path .gitignore",
     "test": "wtr --coverage",
     "test:watch": "wtr --watch",
-    "build": "rimraf dist && tsc && rollup -c rollup.config.js && npm run analyze -- --exclude dist",
-    "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
-    "analyze": "cem analyze --litelement",
-    "start": "wds"
+    "build": "npm run build:clean && npm run build:bundle && npm run build:analyze",
+    "build:analyze": "cem analyze --litelement --globs \"src/**/*.ts\" --outdir dist",
+    "build:bundle": "rollup -c rollup.config.js",
+    "build:clean": "rimraf dist",
+
+    "start": "wds",
+    "start:build": "npm run build && wds --root-dir dist --app-index index.html --open"
   },
   "dependencies": {
     "idb": "^7.0",
@@ -20,21 +23,24 @@
     "open-props": "^1.0"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.4",
+    "@custom-elements-manifest/analyzer": "^0.5",
     "@open-wc/dev-server-hmr": "^0.1",
     "@open-wc/eslint-config": "^7.0",
     "@open-wc/testing": "^3.0",
-    "@rollup/plugin-node-resolve": "^13.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.0.6",
     "@typescript-eslint/eslint-plugin": "^5.6",
     "@typescript-eslint/parser": "^5.6",
     "@web/dev-server": "^0.1",
     "@web/dev-server-esbuild": "^0.2",
     "@web/dev-server-import-maps": "^0.0.6",
-    "@web/rollup-plugin-html": "^1.10",
-    "@web/rollup-plugin-import-meta-assets": "^1.0",
+    "@web/rollup-plugin-html": "^1.10.1",
+    "@web/rollup-plugin-import-meta-assets": "^1.0.7",
     "@web/test-runner": "^0.13",
     "@web/test-runner-playwright": "^0.8",
     "babel-plugin-template-html-minifier": "^4.1",
+    "copyfiles": "^2.4",
     "eslint": "^7.32",
     "eslint-config-prettier": "^8.3",
     "eslint-plugin-lit-a11y": "^2.2",
@@ -43,6 +49,9 @@
     "prettier": "^2.4",
     "rimraf": "^3.0",
     "rollup": "^2.61",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-esbuild": "^4.7.2",
+    "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.3",
     "typescript": "^4.5"
   },
@@ -76,7 +85,8 @@
         {
           "devDependencies": [
             "**/*.test.ts",
-            "**/*.config.mjs"
+            "**/*.config.mjs",
+            "**/*.config.js"
           ]
         }
       ]
@@ -97,5 +107,5 @@
       "prettier --write"
     ]
   },
-  "customElements": "custom-elements.json"
+  "customElements": "dist/custom-elements.json"
 }

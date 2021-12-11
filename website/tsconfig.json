@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    // "allowSyntheticDefaultImports": false,
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "importHelpers": true,
@@ -12,8 +13,6 @@
     "resolveJsonModule": true,
     "rootDir": ".",
     "target": "esnext",
-
-    // "allowSyntheticDefaultImports": true,
 
     // Typing
     "alwaysStrict": true,

@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
-    "types": [],
+    "incremental": false,
+    "noEmit": false,
+    "noEmitOnError": true,
+    "outDir": "dist",
+    "types": []
   },
-  "exclude": ["coverage", ".*", "**/*.test.ts"],
+  "exclude": ["coverage", ".*", "**/*.test.ts", "node_modules"],
   "extends": "./tsconfig.json"
 }
