@@ -10,10 +10,9 @@
     "test": "wtr --coverage",
     "test:watch": "wtr --watch",
     "build": "npm run build:clean && npm run build:bundle && npm run build:analyze",
-    "build:analyze": "cem analyze --litelement --globs \"src/**/*.ts\" --outdir dist",
+    "build:analyze": "cem analyze --litelement --globs \"**/*.ts\" --exclude \"node_modules\"",
     "build:bundle": "rollup -c rollup.config.js",
     "build:clean": "rimraf dist",
-
     "start": "wds",
     "start:build": "npm run build && wds --root-dir dist --app-index index.html --open"
   },
@@ -107,5 +106,5 @@
       "prettier --write"
     ]
   },
-  "customElements": "dist/custom-elements.json"
+  "customElements": "custom-elements.json"
 }
