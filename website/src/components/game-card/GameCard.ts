@@ -1,10 +1,10 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { GameSummary } from './model';
 
 @customElement('game-card')
 export class GameCard extends LitElement {
-  @property()
-  game = {} as any;
+  @property() game: GameSummary;
 
   static styles = css`
     :host {
@@ -49,14 +49,16 @@ export class GameCard extends LitElement {
   `;
 
   render() {
+    const { description, logo, route, title } = this.game;
+
     return html`
       <div class="image-container">
-        <img src="${this.game.image.href}" alt="${this.game.image.alt}" />
+        <img src=${logo} alt=${title} />
       </div>
       <div class="card-body">
-        <a href="${this.game.href}" class="block mt-2">
-          <p class="game-title">${this.game.title}</p>
-          <p class="game-description">${this.game.description}</p>
+        <a href="${route}" class="block mt-2">
+          <p class="game-title">${title}</p>
+          <p class="game-description">${description}</p>
         </a>
       </div>
     `;

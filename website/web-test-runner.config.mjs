@@ -1,18 +1,16 @@
 import { playwrightLauncher } from '@web/test-runner-playwright';
-import serverConfig from './web-dev-server.config';
+import config from './web-dev-server.config.mjs';
 
+const { nodeResolve, plugins } = config;
 const filteredLogs = ['Running in dev mode', 'lit-html is in dev mode'];
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
+  // Inheriting
+  plugins,
+  nodeResolve,
+
   /** Test files to run */
-  files: 'out-tsc/test/**/*.test.js',
-
-  /** Resolve bare module imports */
-  nodeResolve: {
-    exportConditions: ['browser', 'development'],
-  },
-
-  plugins: serverConfig.plugins,
+  files: '**/*.test.ts',
 
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {

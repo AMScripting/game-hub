@@ -1,27 +1,34 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
-    "moduleResolution": "node",
-    "noEmitOnError": true,
-    "lib": ["es2017", "dom"],
-    "strict": true,
+    "allowJs": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "sourceMap": true,
-    "inlineSources": true,
-    "rootDir": ".",
     "incremental": true,
-    "useDefineForClassFields": false,
-    "baseUrl": "src",
-    "paths": {
-      // "@components/*": ["components/*"],
-      // "@schemas/*": ["schemas/*"],
-      // "@services/*": ["services/*"],
-      // "@workers/*": ["workers/*"]
-    }
+    "lib": ["esnext", "es2017", "dom"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "target": "esnext",
+
+    // "allowSyntheticDefaultImports": true,
+
+    // Typing
+    "alwaysStrict": true,
+    "checkJs": true,
+    "noImplicitThis": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "useDefineForClassFields": true,
+
+    // Dev stuff
+    "inlineSources": true,
+    "sourceMap": true,
+    "types": ["node", "mocha"],
   },
+  "exclude": ["coverage"],
   "include": ["**/*.ts"]
 }

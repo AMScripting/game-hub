@@ -1,19 +1,15 @@
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
 
-import { GameHub } from './GameCard';
+import { GameCard } from './GameCard';
 import '.';
 
-describe('GameHub', () => {
-  let element: GameHub;
+describe('GameCard', () => {
+  let element: GameCard;
   beforeEach(async () => {
-    element = await fixture(html`<game-hub></game-hub>`);
-  });
-
-  it('renders a h1', () => {
-    const h1 = element.shadowRoot!.querySelector('h1')!;
-    expect(h1).not.to.equal(null);
-    expect(h1.textContent).to.equal('My app');
+    element = await fixture(html`
+      <game-card .game=${{ description: 'desc', title: 'title' }}></game-card>
+    `);
   });
 
   it('passes the a11y audit', async () => {

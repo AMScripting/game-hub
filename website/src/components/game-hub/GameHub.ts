@@ -1,25 +1,14 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import '../game-card/GameCard';
+import { GameSummary } from '../game-card/model';
+import GameList from '../../../configs/game-list.json';
 
-const logo = new URL('/assets/open-wc-logo.svg', import.meta.url).href;
+import '../game-card';
 
 @customElement('game-hub')
 export class GameHub extends LitElement {
   @property({ type: String }) title = 'Game Hub';
-
-  @property({ type: Array })
-  games = [
-    {
-      title: 'Space',
-      description: 'lorem ipsum',
-      image: {
-        href: logo,
-        alt: '',
-      },
-      href: '',
-    },
-  ];
+  @property({ type: Array }) games: GameSummary[] = GameList;
 
   static styles = css`
     :host {

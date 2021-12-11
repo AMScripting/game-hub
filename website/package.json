@@ -12,17 +12,15 @@
     "build": "rimraf dist && tsc && rollup -c rollup.config.js && npm run analyze -- --exclude dist",
     "start:build": "web-dev-server --root-dir dist --app-index index.html --open",
     "analyze": "cem analyze --litelement",
-    "start": "wds --hmr"
+    "start": "wds"
   },
   "dependencies": {
-    "@lit/reactive-element": "^1.0.2",
-    "idb": "^7.0.0",
+    "idb": "^7.0",
     "lit": "^2.0",
-    "open-props": "^1.0.12"
+    "open-props": "^1.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.4",
-    "@open-wc/building-rollup": "^2.0",
     "@open-wc/dev-server-hmr": "^0.1",
     "@open-wc/eslint-config": "^7.0",
     "@open-wc/testing": "^3.0",
@@ -44,9 +42,7 @@
     "lint-staged": "^10.5",
     "prettier": "^2.4",
     "rimraf": "^3.0",
-    "rollup": "^2.60",
-    "rollup-plugin-terser": "^7.0",
-    "rollup-plugin-workbox": "^6.2",
+    "rollup": "^2.61",
     "tslib": "^2.3",
     "typescript": "^4.5"
   },
@@ -62,7 +58,13 @@
       "lit-a11y"
     ],
     "rules": {
-      "lines-between-class-members": ["error", "always", { "exceptAfterSingleLine": true }],
+      "lines-between-class-members": [
+        "error",
+        "always",
+        {
+          "exceptAfterSingleLine": true
+        }
+      ],
       "no-unused-vars": "off",
       "@typescript-eslint/no-unused-vars": [
         "error"

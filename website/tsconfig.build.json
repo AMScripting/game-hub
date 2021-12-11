@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "types": [],
+  },
+  "exclude": ["coverage", ".*", "**/*.test.ts"],
+  "extends": "./tsconfig.json"
+}
