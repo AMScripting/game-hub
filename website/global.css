@@ -1,0 +1,119 @@
+@import './node_modules/open-props/open-props.min.css';
+@import './node_modules/open-props/normalize.min.css';
+
+html {
+  /** Light **/
+  --brand-light: var(--orange-6);
+
+  --text1-light: var(--gray-8);
+  --text2-light: var(--gray-7);
+
+  --surface1-light: var(--gray-2);
+  --surface2-light: var(--gray-0);
+  --surface3-light: var(--gray-1);
+  --surface4-light: var(--gray-3);
+
+  /** Dark **/
+  --brand-dark: var(--orange-3);
+
+  --text1-dark: var(--gray-1);
+  --text2-dark: var(--gray-3);
+
+  --surface1-dark: var(--gray-9);
+  --surface2-dark: var(--gray-8);
+  --surface3-dark: var(--gray-7);
+  --surface4-dark: var(--gray-6);
+
+  /** Dim **/
+  --brand-dim: var(--orange-4);
+
+  --text1-dim: var(--gray-3);
+  --text2-dim: var(--gray-4);
+
+  --surface1-dim: var(--gray-8);
+  --surface2-dim: var(--gray-7);
+  --surface3-dim: var(--gray-6);
+  --surface4-dim: var(--gray-5);
+}
+
+:root {
+  --brand: var(--brand-light);
+
+  --text1: var(--text1-light);
+  --text2: var(--text2-light);
+
+  --surface1: var(--surface1-light);
+  --surface2: var(--surface2-light);
+  --surface3: var(--surface3-light);
+  --surface4: var(--surface4-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brand: var(--brand-dark);
+
+    --text1: var(--text1-dark);
+    --text2: var(--text2-dark);
+
+    --surface1: var(--surface1-dark);
+    --surface2: var(--surface2-dark);
+    --surface3: var(--surface3-dark);
+    --surface4: var(--surface4-dark);
+  }
+}
+
+@media (prefers-contrast: less) {
+  :root {
+    --brand: var(--brand-dim);
+
+    --text1: var(--text1-dim);
+    --text2: var(--text2-dim);
+
+    --surface1: var(--surface1-dim);
+    --surface2: var(--surface2-dim);
+    --surface3: var(--surface3-dim);
+    --surface4: var(--surface4-dim);
+  }
+}
+
+html {
+  background-color: var(--surface1);
+  color: var(--text1);
+  accent-color: var(--brand);
+}
+
+/* .surface1 {
+  background-color: var(--surface1);
+  color: var(--text2);
+}
+
+.surface2 {
+  background-color: var(--surface2);
+  color: var(--text2);
+}
+
+.surface3 {
+  background-color: var(--surface3);
+  color: var(--text1);
+}
+
+.surface4 {
+  background-color: var(--surface4);
+  color: var(--text1);
+} */
+
+h1,
+h2,
+h3,
+h4,
+p,
+dt {
+  color: var(--text1);
+}
+
+h5,
+h6,
+small,
+dd {
+  color: var(--text2);
+}
