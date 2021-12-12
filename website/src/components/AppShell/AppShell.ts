@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, state } from 'lit/decorators.js';
-import { Router, Route } from '../../services/Router';
+import Router, { Route } from '../../services/Router';
 import styles from './styles';
 
 @customElement('app-shell')
