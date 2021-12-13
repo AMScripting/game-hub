@@ -12,9 +12,9 @@ function renderCard(summary: GameSummary) {
 
 @customElement('game-hub')
 export class GameHub extends LitElement {
-  @property({ type: String }) title = 'Game Hub';
+  static readonly styles = [styles];
 
-  static styles = styles;
+  @property({ type: String }) title = 'Game Hub';
 
   render() {
     return GameList.map(renderCard);

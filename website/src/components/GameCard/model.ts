@@ -5,6 +5,5 @@ export interface GameSummary {
   description: string;
   logo: string;
   route: Route;
-  splashImage: string;
 }
 export default GameSummary;

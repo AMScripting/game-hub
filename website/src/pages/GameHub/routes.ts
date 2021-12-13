@@ -7,6 +7,7 @@ const route: Route = {
   path: '/',
   render: html`<game-hub></game-hub>`,
   module: () => import('./GameHub'),
+  visible: { footer: true },
 };
 
 export default route;

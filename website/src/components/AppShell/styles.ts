@@ -3,22 +3,91 @@ import { css } from 'lit';
 export const styles = css`
   :host {
     position: relative;
-    display: block;
+    display: grid;
     background-color: var(--surface1);
-    /** sm:px-6 lg:pt-24 lg:pb-28 lg:px-8 */
+    width: 100vw;
+    height: 100vh;
+
+    grid-template-columns: var(--size-fluid-9) auto;
+    grid-template-rows: var(--size-fluid-6) auto var(--size-fluid-6);
+    grid-template-areas:
+      'main main'
+      'main main'
+      'main main';
   }
-  .container {
-    position: relative;
-    max-width: 80rem; /** max-w-7xl */
-    margin: 0 auto;
-    text-align: center;
+
+  :host([footer]) {
+    grid-template-areas:
+      'main main'
+      'main main'
+      'footer footer';
   }
-  .app-footer {
+  :host([header]) {
+    grid-template-areas:
+      'header header'
+      'main main'
+      'main main';
+  }
+  :host([sidebar][open]) {
+    grid-template-areas:
+      'sidebar main'
+      'sidebar main'
+      'sidebar main';
+  }
+
+  :host([footer][header]) {
+    grid-template-areas:
+      'header header'
+      'main main'
+      'footer footer';
+  }
+  :host([footer][sidebar][open]) {
+    grid-template-areas:
+      'sidebar main'
+      'sidebar main'
+      'footer footer';
+  }
+  :host([header][sidebar][open]) {
+    grid-template-areas:
+      'header header'
+      'sidebar main'
+      'sidebar main';
+  }
+
+  :host([footer][header][sidebar][open]) {
+    grid-template-areas:
+      'header header'
+      'sidebar main'
+      'footer footer';
+  }
+
+  :host(:not([footer])) footer {
+    display: none;
+  }
+  :host(:not([header])) header {
+    display: none;
+  }
+  :host(:not([sidebar][open])) nav {
+    display: none;
+  }
+
+  footer {
+    grid-area: footer;
     font-size: calc(12px + 0.5vmin);
     align-items: center;
   }
-  .app-footer a {
+  footer a {
     margin-left: 5px;
+  }
+  header {
+    grid-area: header;
+  }
+  main {
+    grid-area: main;
+    text-align: center;
+  }
+  nav {
+    grid-area: sidebar;
   }
 `;
 export default styles;

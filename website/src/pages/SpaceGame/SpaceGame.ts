@@ -1,12 +1,31 @@
 import { LitElement, html } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, state } from 'lit/decorators.js';
+import { GameScreen, SplashLogo } from './models';
 import styles from './styles';
+import route from './routes';
+
+import '../../components/SplashScreen';
+
+const { title } = route;
 
 @customElement('space-game')
 export class SpaceGame extends LitElement {
-  static styles = styles;
+  static readonly styles = [styles];
+
+  @state() private screen: typeof GameScreen[keyof typeof GameScreen];
 
   render() {
-    return html`space game`;
+    const { screen } = this;
+
+    switch (screen) {
+      case GameScreen.MainMenu:
+        return html`main menu`;
+      case GameScreen.Splash:
+      default:
+        return html`<splash-screen
+          logo=${SplashLogo}
+          title=${title}
+        ></splash-screen>`;
+    }
   }
 }
