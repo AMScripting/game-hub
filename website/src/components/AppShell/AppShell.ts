@@ -7,10 +7,10 @@ import styles from './styles';
 export class AppShell extends LitElement {
   static readonly styles = [styles];
   private watcher: () => void;
+  @state() private open?: boolean;
   @state() private route: Route;
   @property({ type: Boolean, reflect: true }) footer?: boolean;
   @property({ type: Boolean, reflect: true }) header?: boolean;
-  @property({ type: Boolean, reflect: true }) open?: boolean;
   @property({ type: Boolean, reflect: true }) sidebar?: boolean;
 
   connectedCallback() {
@@ -31,11 +31,11 @@ export class AppShell extends LitElement {
   }
 
   render() {
-    const { render } = this.route || {};
+    const { open, route: { render } = {} } = this;
 
     return html`
-      <header>header</header>
-      <nav>nav</nav>
+      <header></header>
+      <nav ?open=${open}></nav>
       <main>${render || null}</main>
       <footer>
         Made with love by

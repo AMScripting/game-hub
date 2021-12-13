@@ -17,6 +17,6 @@ export class GameHub extends LitElement {
   @property({ type: String }) title = 'Game Hub';
 
   render() {
-    return GameList.map(renderCard);
+    return html` <div id="cards">${GameList.map(renderCard)}</div> `;
   }
 }

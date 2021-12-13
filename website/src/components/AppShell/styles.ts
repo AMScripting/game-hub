@@ -15,7 +15,6 @@ export const styles = css`
       'main main'
       'main main';
   }
-
   :host([footer]) {
     grid-template-areas:
       'main main'
@@ -28,46 +27,19 @@ export const styles = css`
       'main main'
       'main main';
   }
-  :host([sidebar][open]) {
-    grid-template-areas:
-      'sidebar main'
-      'sidebar main'
-      'sidebar main';
-  }
-
   :host([footer][header]) {
     grid-template-areas:
       'header header'
       'main main'
       'footer footer';
   }
-  :host([footer][sidebar][open]) {
-    grid-template-areas:
-      'sidebar main'
-      'sidebar main'
-      'footer footer';
-  }
-  :host([header][sidebar][open]) {
-    grid-template-areas:
-      'header header'
-      'sidebar main'
-      'sidebar main';
-  }
-
-  :host([footer][header][sidebar][open]) {
-    grid-template-areas:
-      'header header'
-      'sidebar main'
-      'footer footer';
-  }
-
   :host(:not([footer])) footer {
     display: none;
   }
   :host(:not([header])) header {
     display: none;
   }
-  :host(:not([sidebar][open])) nav {
+  :host(:not([sidebar])) nav {
     display: none;
   }
 
@@ -85,9 +57,11 @@ export const styles = css`
   main {
     grid-area: main;
     text-align: center;
+    overflow: auto;
   }
-  nav {
-    grid-area: sidebar;
+  nav[open] {
+    grid-area: 1 / 1 / span 3 / span 1;
+    z-index: 100;
   }
 `;
 export default styles;
