@@ -7,11 +7,15 @@ export class SplashScreen extends LitElement {
   static readonly styles = [styles];
 
   @property() logo: string;
+  @property({ type: Number }) progress = 0;
   @property() title: string;
 
   render() {
-    const { logo, title } = this;
+    const { logo, progress, title } = this;
 
-    return html` <img src=${logo} alt=${title} /> `;
+    return html`
+      <img src=${logo} alt=${title} />
+      <progress value=${progress} max="100"></progress>
+    `;
   }
 }
