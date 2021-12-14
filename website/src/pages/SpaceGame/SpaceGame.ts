@@ -12,10 +12,31 @@ const { title } = route;
 export class SpaceGame extends LitElement {
   static readonly styles = [styles];
 
-  @state() private screen: typeof GameScreen[keyof typeof GameScreen];
+  @state() private loading: { assets: Promise<unknown>[]; complete: number };
+  @state() private screen: typeof GameScreen[keyof typeof GameScreen] =
+    GameScreen.Splash;
+
+  constructor() {
+    super();
+
+    // TODO: this works the progress bar, tie it into the asset loader
+    this.loading = {
+      assets: [],
+      complete: 0,
+    };
+    setTimeout(() => {
+      this.loading = {
+        assets: [Promise.resolve()],
+        complete: 1,
+      };
+    }, 3000);
+  }
 
   render() {
-    const { screen } = this;
+    const {
+      loading: { assets, complete },
+      screen,
+    } = this;
 
     switch (screen) {
       case GameScreen.MainMenu:
@@ -25,6 +46,7 @@ export class SpaceGame extends LitElement {
         return html`<splash-screen
           logo=${SplashLogo}
           title=${title}
+          .loading=${{ complete, total: assets.length }}
         ></splash-screen>`;
     }
   }

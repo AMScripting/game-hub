@@ -6,16 +6,27 @@ import styles from './styles';
 export class SplashScreen extends LitElement {
   static readonly styles = [styles];
 
+  @property({ type: Object }) loading: { complete: number; total: number } = {
+    complete: 0,
+    total: 0,
+  };
   @property() logo: string;
-  @property({ type: Number }) progress = 0;
   @property() title: string;
 
   render() {
-    const { logo, progress, title } = this;
+    const {
+      logo,
+      loading: { complete, total },
+      title,
+    } = this;
 
     return html`
       <img src=${logo} alt=${title} />
-      <progress value=${progress} max="100"></progress>
+      <progress
+        value=${complete}
+        max=${total}
+        style="--value: ${complete / total}"
+      ></progress>
     `;
   }
 }

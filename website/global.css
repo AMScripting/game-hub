@@ -46,6 +46,7 @@ html {
   --surface2: var(--surface2-light);
   --surface3: var(--surface3-light);
   --surface4: var(--surface4-light);
+  --surface-invert: var(--surface1-dark);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,6 +60,7 @@ html {
     --surface2: var(--surface2-dark);
     --surface3: var(--surface3-dark);
     --surface4: var(--surface4-dark);
+    --surface-invert: var(--surface1-light);
   }
 }
 
@@ -73,6 +75,7 @@ html {
     --surface2: var(--surface2-dim);
     --surface3: var(--surface3-dim);
     --surface4: var(--surface4-dim);
+    --surface-invert: var(--surface1-light);
   }
 }
 
