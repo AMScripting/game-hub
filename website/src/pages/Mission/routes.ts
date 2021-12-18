@@ -3,10 +3,10 @@ import { Route } from '../../models/Route';
 import SpaceGame from '../../games/SpaceGame/summary';
 
 export const route: Route = {
-  module: () => import('./MainMenu'),
-  path: `/${SpaceGame.name}/menu`,
-  render: html`<main-menu-page .summary=${SpaceGame}></main-menu-page>`,
-  title: `Menu - ${SpaceGame.name}`,
+  module: () => import('./Mission'),
+  path: `/${SpaceGame.name}/mission`,
+  render: html`<mission-page .summary=${SpaceGame}></mission-page>`,
+  title: `Mission - ${SpaceGame.name}`,
 };
 
 export default route;

@@ -4,9 +4,9 @@ import SpaceGame from '../../games/SpaceGame/summary';
 
 export const route: Route = {
   module: () => import('./Settings'),
-  path: `/${SpaceGame.name}/settings`,
+  path: `/${SpaceGame.name}/menu/settings`,
   render: html`<settings-page .summary=${SpaceGame}></settings-page>`,
-  title: `${SpaceGame.name} - Settings`,
+  title: `Settings - ${SpaceGame.name}`,
 };
 
 export default route;

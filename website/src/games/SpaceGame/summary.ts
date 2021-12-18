@@ -7,7 +7,7 @@ export const summary: GameSummary = {
   title: 'Space Game',
   description: 'lorem ipsum',
   logo: new URL('../../../assets/open-wc-logo.svg', import.meta.url).href,
-  route: `/${name}`,
+  route: `/${name}/menu`,
   splash: new URL('../../../assets/open-wc-logo.svg', import.meta.url).href,
 };
 export default summary;

@@ -3,23 +3,22 @@ import { customElement, property } from 'lit/decorators.js';
 import GameSummary from '../../models/GameSummary';
 import styles from './styles';
 
-@customElement('main-menu-page')
-export class MainMenuPage extends LitElement {
+@customElement('mission-page')
+export default class MissionPage extends LitElement {
   static readonly styles = [styles];
 
   @property({ type: Object }) summary: GameSummary;
 
   render() {
     const {
-      summary: { name, title },
+      summary: { name },
     } = this;
 
     return html`
-      <h1>${title}</h1>
-      <a href="/${name}/character">New Game</a>
-      <a href="/${name}">Continue Game</a>
+      <h1>Mission</h1>
+      <a href="/${name}/mission/recap">Done</a>
       <a href="/${name}/menu/settings">Settings</a>
-      <a href="/">Exit</a>
+      <a href="/${name}">Abandon</a>
     `;
   }
 }

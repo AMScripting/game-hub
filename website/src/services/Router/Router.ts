@@ -1,4 +1,4 @@
-import GameHubRoute from '../../pages/GameHub/routes';
+import GameHubRoute from '../../pages/Hub/routes';
 import { Route, Routes } from '../../models/Route';
 import UUID from '../../utils/UUID';
 
