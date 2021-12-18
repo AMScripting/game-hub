@@ -1,16 +1,17 @@
 import GameHubRoute from '../../pages/GameHub/routes';
-import { Route, Routes } from './models';
+import { Route, Routes } from '../../models/Route';
 import UUID from '../../utils/UUID';
 
 type Callback = (route: Route) => void;
 
 /**
  * Fetches the route objects based on a given path
+ * TODO: need to eventually support routes with variables
  * @param _path
  * @returns
  */
 function lookupRoute(_path: string): Route | undefined {
-  return Object.values(Routes).find(({ path }) => path === _path);
+  return Routes.find(({ path }) => path === _path);
 }
 
 export class Router {
@@ -25,7 +26,9 @@ export class Router {
       {
         set(obj: Router['proxy'], prop: keyof Router['proxy'], value) {
           if (prop === 'currentRoute') {
-            Object.values(self.callbacks).forEach(callback => callback(value));
+            Object.values(self.callbacks).forEach((callback) =>
+              callback(value),
+            );
           }
 
           // Default setter logic
@@ -33,14 +36,14 @@ export class Router {
           obj[prop] = value;
           return true;
         },
-      }
+      },
     );
     this.proxy.currentRoute.module();
     document.title = this.proxy.currentRoute.title;
 
     // Registering the router for monitoring changes to the window state
     window.addEventListener('popstate', () => {
-      this.changeRoute(lookupRoute(window.location.pathname));
+      this.changeRoute(window.location.pathname);
     });
   }
 
@@ -48,9 +51,10 @@ export class Router {
    * Changes the current route to the newly provided route.  Additionally imports that route dynamically.
    * @param route
    */
-  async changeRoute(route?: Route) {
+  async changeRoute(path: string) {
+    const route = lookupRoute(path);
     if (!route) {
-      this.changeRoute(GameHubRoute);
+      this.changeRoute('/');
       return;
     }
     this.proxy.currentRoute = route;
@@ -62,10 +66,9 @@ export class Router {
       window.history.pushState({}, route.title, route.path);
     } catch {
       // Bounce the user back to the home page when the route is improperly parsed
-      this.changeRoute(GameHubRoute);
+      this.changeRoute(GameHubRoute.path);
     }
   }
-
   /**
    * Allows watching for changes to the currently loaded route.
    * @param callback
@@ -81,5 +84,4 @@ export class Router {
     };
   }
 }
-
 export default new Router();

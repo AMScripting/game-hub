@@ -1,6 +1,8 @@
 import { LitElement, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import Router, { Route } from '../../services/Router';
+import Router from '../../services/Router';
+import { Route } from '../../models/Route';
+import { hrefInterceptor } from './logic';
 import styles from './styles';
 
 @customElement('app-shell')
@@ -15,7 +17,7 @@ export class AppShell extends LitElement {
 
   connectedCallback() {
     super.connectedCallback?.();
-    Router.watch((route: Route) => {
+    this.watcher = Router.watch((route: Route) => {
       this.route = route;
       ({
         footer: this.footer,
@@ -23,13 +25,14 @@ export class AppShell extends LitElement {
         sidebar: this.sidebar,
       } = route?.visible || {});
     });
-  }
 
+    this.shadowRoot?.addEventListener('click', hrefInterceptor);
+  }
   disconnectedCallback() {
     super.disconnectedCallback?.();
     this.watcher?.();
+    this.shadowRoot?.removeEventListener('click', hrefInterceptor);
   }
-
   render() {
     const { open, route: { render } = {} } = this;
 

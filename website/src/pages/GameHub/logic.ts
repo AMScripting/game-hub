@@ -1,11 +1,4 @@
-import { GameSummary } from '../../components/GameCard/model';
-import SpaceGameRoute from '../SpaceGame/routes';
+import GameSummary from '../../models/GameSummary';
+import SpaceGame from '../../games/SpaceGame/summary';
 
-export const GameList: GameSummary[] = [
-  {
-    title: SpaceGameRoute.title,
-    description: 'lorem ipsum',
-    logo: new URL('../../../assets/open-wc-logo.svg', import.meta.url).href,
-    route: SpaceGameRoute,
-  },
-];
+export const GameList: GameSummary[] = [SpaceGame];

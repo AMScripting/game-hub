@@ -1,5 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import GameSummary from '../../models/GameSummary';
 import styles from './styles';
 
 @customElement('splash-screen')
@@ -10,14 +11,12 @@ export class SplashScreen extends LitElement {
     complete: 0,
     total: 0,
   };
-  @property() logo: string;
-  @property() title: string;
+  @property({ type: Object }) summary: GameSummary;
 
   render() {
     const {
-      logo,
+      summary: { logo, title },
       loading: { complete, total },
-      title,
     } = this;
 
     return html`

@@ -7,12 +7,12 @@ export abstract class DataWorker<DBSchema, WorkerSchema> {
   constructor(
     storeName: string,
     workerPath: string,
-    initializer?: OpenDBCallbacks<DBSchema>['upgrade']
+    initializer?: OpenDBCallbacks<DBSchema>['upgrade'],
   ) {
     this.database = openDB<DBSchema>(
       storeName,
       1,
-      initializer ? { upgrade: initializer } : undefined
+      initializer ? { upgrade: initializer } : undefined,
     );
 
     this.worker = new Worker(workerPath);

@@ -7,7 +7,7 @@ import '.';
 describe('GameHub', () => {
   let element: GameHub;
   beforeEach(async () => {
-    element = await fixture(html`<game-hub></game-hub>`);
+    element = await fixture(html` <game-hub></game-hub> `);
   });
 
   it('passes the a11y audit', async () => {

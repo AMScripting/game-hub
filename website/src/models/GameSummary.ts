@@ -1,9 +1,9 @@
-import { Route } from '../../services/Router/models';
-
 export interface GameSummary {
+  name: string;
   title: string;
   description: string;
   logo: string;
-  route: Route;
+  route: string;
+  splash: string;
 }
 export default GameSummary;

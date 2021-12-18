@@ -6,6 +6,7 @@ export default class TestWorker extends DataWorker<Object, Object> {
   }
 
   protected messageResponse(event: unknown) {
+    // eslint-disable-next-line no-console
     console.log('TestWorker', event, this);
   }
 }

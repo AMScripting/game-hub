@@ -29,11 +29,11 @@ export const styles = css`
   }
   ::-webkit-progress-value {
     background-color: var(--brand);
-    transition: width 1s;
+    transition: width 0.25s;
   }
   ::-moz-progress-bar {
     background-color: var(--brand);
-    transition: padding-bottom 1s;
+    transition: padding-bottom 0.25s;
     padding-bottom: calc(var(--value) * 100%);
     transform-origin: 0 0;
     transform: rotate(-90deg) translateX(calc(-1 * var(--size-6)));

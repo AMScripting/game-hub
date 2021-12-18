@@ -55,9 +55,13 @@ export const styles = css`
     grid-area: header;
   }
   main {
+    display: flex;
     grid-area: main;
     text-align: center;
     overflow: auto;
+  }
+  main > * {
+    flex: 1 1 auto;
   }
   nav[open] {
     grid-area: 1 / 1 / span 3 / span 1;
