@@ -1,13 +1,13 @@
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
 
-import { GameHub } from './Hub';
+import { HubPage } from './Hub';
 import '.';
 
-describe('GameHub', () => {
-  let element: GameHub;
+describe('HubPage', () => {
+  let element: HubPage;
   beforeEach(async () => {
-    element = await fixture(html` <game-hub></game-hub> `);
+    element = await fixture(html` <hub-page></hub-page> `);
   });
 
   it('passes the a11y audit', async () => {

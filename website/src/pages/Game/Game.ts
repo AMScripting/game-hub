@@ -4,7 +4,7 @@ import GameSummary from '../../models/GameSummary';
 import styles from './styles';
 
 @customElement('game-page')
-export default class GamePage extends LitElement {
+export class GamePage extends LitElement {
   static readonly styles = [styles];
 
   @property({ type: Object }) summary: GameSummary;

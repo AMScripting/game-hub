@@ -73,12 +73,6 @@
     ],
     "rules": {
       "class-methods-use-this": "off",
-      "lines-between-class-members": "off",
-      "no-unused-vars": "off",
-      "@typescript-eslint/no-unused-vars": [
-        "error"
-      ],
-      "import/no-unresolved": "off",
       "import/extensions": "off",
       "import/no-extraneous-dependencies": [
         "error",
@@ -89,6 +83,16 @@
             "**/*.config.js"
           ]
         }
+      ],
+      "import/no-unresolved": "off",
+      "lines-between-class-members": "off",
+      "no-unused-vars": "off",
+      "no-shadow": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
+      "@typescript-eslint/no-shadow": [
+        "error"
       ]
     }
   },

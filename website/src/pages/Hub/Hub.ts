@@ -6,15 +6,22 @@ import styles from './styles';
 
 import '../../components/GameCard';
 
-function renderCard(summary: GameSummary) {
-  return html` <game-card .game=${summary}></game-card> `;
-}
-
 @customElement('hub-page')
 export class HubPage extends LitElement {
   static readonly styles = [styles];
 
+  constructor() {
+    super();
+
+    this.renderCard = this.renderCard.bind(this);
+  }
+
   render() {
+    const { renderCard } = this;
+
     return html` <div id="cards">${GameList.map(renderCard)}</div> `;
+  }
+  private renderCard(summary: GameSummary) {
+    return html`<game-card .game=${summary}></game-card>`;
   }
 }

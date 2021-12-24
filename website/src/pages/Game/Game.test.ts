@@ -2,13 +2,15 @@ import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
 
 import { summary } from '../../games/SpaceGame';
-import { GameCard } from './GameCard';
+import { GamePage } from './Game';
 import '.';
 
-describe('GameCard', () => {
-  let element: GameCard;
+describe('GamePage', () => {
+  let element: GamePage;
   beforeEach(async () => {
-    element = await fixture(html` <game-card .game=${summary}></game-card> `);
+    element = await fixture(
+      html` <game-page .summary=${summary}></game-page> `,
+    );
   });
 
   it('passes the a11y audit', async () => {

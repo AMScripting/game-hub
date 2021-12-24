@@ -4,7 +4,7 @@ import GameSummary from '../../models/GameSummary';
 import styles from './styles';
 
 @customElement('mission-page')
-export default class MissionPage extends LitElement {
+export class MissionPage extends LitElement {
   static readonly styles = [styles];
 
   @property({ type: Object }) summary: GameSummary;

@@ -6,7 +6,7 @@ import GameSummary from '../../models/GameSummary';
 @customElement('game-card')
 export class GameCard extends LitElement {
   static readonly styles = [styles];
-  @property() game: GameSummary;
+  @property({ type: Object }) game: GameSummary;
 
   render() {
     const { description, logo, route, title } = this.game;
