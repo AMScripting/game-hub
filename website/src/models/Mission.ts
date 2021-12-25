@@ -1,3 +1,9 @@
+export enum MissionStatus {
+  Pending = 'pending',
+  InProgress = 'in-progress',
+  Abandoned = 'abandoned',
+  Completed = 'completed',
+}
 export enum MissionType {
   AbandonedShip = 'AbandonedShip',
   Asteroid = 'Asteroid',
@@ -5,9 +11,12 @@ export enum MissionType {
   Satellite = 'Satellite',
 }
 export interface Mission {
+  title: string;
   type: MissionType;
   description: string;
   logo: string;
-  map: unknown;
+  map?: unknown;
+  status?: MissionStatus;
+  startDate?: Date;
 }
 export default Mission;

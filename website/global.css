@@ -38,6 +38,7 @@ html {
 
 :root {
   --brand: var(--brand-light);
+  --brand-text: var(--text1-dark);
 
   --text1: var(--text1-light);
   --text2: var(--text2-light);
@@ -47,11 +48,17 @@ html {
   --surface3: var(--surface3-light);
   --surface4: var(--surface4-light);
   --surface-invert: var(--surface1-dark);
+
+  --mdc-theme-primary: var(--brand);
+  --mdc-button-outline-color: var(--mdc-theme-primary);
+  --mdc-theme-on-primary: var(--brand-text);
+  --mdc-button-disabled-ink-color: var(--text2);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --brand: var(--brand-dark);
+    --brand-text: var(--text1-light);
 
     --text1: var(--text1-dark);
     --text2: var(--text2-dark);
@@ -67,6 +74,7 @@ html {
 @media (prefers-contrast: less) {
   :root {
     --brand: var(--brand-dim);
+    --brand-text: var(--text1-light);
 
     --text1: var(--text1-dim);
     --text2: var(--text2-dim);

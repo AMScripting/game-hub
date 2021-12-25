@@ -5,6 +5,7 @@ export const styles = css`
     display: flex;
     position: relative;
     flex-direction: column;
+    user-select: none;
   }
 `;
 export default styles;

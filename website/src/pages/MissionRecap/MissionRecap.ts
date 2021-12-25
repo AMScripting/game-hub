@@ -3,6 +3,13 @@ import { customElement, property } from 'lit/decorators.js';
 import GameSummary from '../../models/GameSummary';
 import styles from './styles';
 
+/**
+ * TODO:
+ * - ensure success and failure cases are accounted for
+ * - upon success or failure, clear the mission state and regenerate the availableMissions
+ * - allow for an exist state that promotes both resume later and failure states
+ */
+
 @customElement('mission-recap-page')
 export class MissionRecapPage extends LitElement {
   static readonly styles = [styles];
