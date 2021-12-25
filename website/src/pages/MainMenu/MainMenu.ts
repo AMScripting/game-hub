@@ -6,7 +6,6 @@ import styles from './styles';
 @customElement('main-menu-page')
 export class MainMenuPage extends LitElement {
   static readonly styles = [styles];
-
   @property({ type: Object }) summary: GameSummary;
 
   render() {

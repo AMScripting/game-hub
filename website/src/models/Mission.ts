@@ -14,6 +14,7 @@ export interface Mission {
   title: string;
   type: MissionType;
   description: string;
+  endDate?: Date;
   logo: string;
   map?: unknown;
   status?: MissionStatus;

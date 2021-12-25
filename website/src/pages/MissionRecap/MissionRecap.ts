@@ -13,7 +13,6 @@ import styles from './styles';
 @customElement('mission-recap-page')
 export class MissionRecapPage extends LitElement {
   static readonly styles = [styles];
-
   @property({ type: Object }) summary: GameSummary;
 
   render() {

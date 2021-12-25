@@ -7,7 +7,7 @@ import { randomInt } from '../../utils/number';
 
 import { missions } from '../../games/SpaceGame/missions';
 
-export class MissionWorker extends DataWorker<MissionSchema, WorkerSchema> {
+class MissionWorker extends DataWorker<MissionSchema, WorkerSchema> {
   constructor() {
     // TODO: make game reference dynamic
     super('SpaceGame-mission-data', '/src/workers/Mission/worker.js', (db) => {
@@ -33,7 +33,7 @@ export class MissionWorker extends DataWorker<MissionSchema, WorkerSchema> {
       ...mission,
       status: MissionStatus.InProgress,
     };
-    (await this.database)?.put(ObjectStore.Missions, newMission);
+    await (await this.database)?.add(ObjectStore.Missions, newMission);
     // TODO: notify that a mission has started
   }
   /**
@@ -92,6 +92,31 @@ export class MissionWorker extends DataWorker<MissionSchema, WorkerSchema> {
     return data.map((type) => missions[type]);
   }
   /**
+   * Sets the markers for missions completion on the given mission.  Status can be overloaded to different values which
+   * allows for transitions to deviant states, such as abandoning a mission; while still flagging endDate completion
+   * markers for metricing.
+   * @param mission
+   * @param [status = MissionStatus.Completed]
+   */
+  async completeMission(
+    mission: Mission,
+    status = MissionStatus.Completed,
+  ): Promise<Mission> {
+    let updatedMission: Mission;
+    try {
+      updatedMission = {
+        endDate: new Date(),
+        ...mission,
+        status,
+      };
+      await (await this.database)?.put(ObjectStore.Missions, updatedMission);
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('MissionWorker: completeMission', e);
+    }
+    return updatedMission!;
+  }
+  /**
    * Checks to see if an active mission is in progress, returning the mission data or null if there are no active
    * missions.
    */
@@ -109,9 +134,14 @@ export class MissionWorker extends DataWorker<MissionSchema, WorkerSchema> {
         if (!cursor) break;
         if (!activeMission) activeMission = { ...cursor.value };
         else
-          cursor.update({ ...cursor.value, status: MissionStatus.Abandoned });
+          cursor.update({
+            endDate: new Date(),
+            ...cursor.value,
+            status: MissionStatus.Abandoned,
+          });
       }
     } catch (e) {
+      // eslint-disable-next-line no-console
       console.error('MissionWorker: fetchActiveMission', e);
     }
 

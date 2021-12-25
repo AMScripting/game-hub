@@ -6,7 +6,6 @@ import { Mission } from '../../models/Mission';
 @customElement('mission-card')
 export class MissionCard extends LitElement {
   static readonly styles = [styles];
-
   @property({ type: Object }) mission: Mission;
   @property({ type: Boolean, reflect: true }) selected = false;
 

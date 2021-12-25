@@ -1,5 +1,6 @@
 import { LitElement, html, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import { until } from 'lit/directives/until.js';
 import GameSummary from '../../models/GameSummary';
 import styles from './styles';
 
@@ -13,31 +14,35 @@ import '../../components/MissionCard';
 @customElement('mission-select-page')
 export class MissionSelectPage extends LitElement {
   static readonly styles = [styles];
-
-  @property({ type: Object }) summary: GameSummary;
-
-  @state() private availableMissions: Mission[] = [];
+  @state() private availableMissions: Promise<Mission[]>;
   @state() private selectedMission: MissionType;
+  @property({ type: Object }) summary: GameSummary;
 
   constructor() {
     super();
 
-    this.renderMissionTile = this.renderMissionTile.bind(this);
+    this.renderLoader = this.renderLoader.bind(this);
+    this.renderMissionTiles = this.renderMissionTiles.bind(this);
   }
   connectedCallback() {
     super.connectedCallback?.();
 
-    MissionWorker.availableMissions().then((missions) => {
-      this.availableMissions = missions;
-    });
+    this.availableMissions = MissionWorker.availableMissions();
   }
   render() {
-    const { availableMissions, renderMissionTile, selectedMission, summary } =
-      this;
+    const {
+      availableMissions,
+      renderLoader,
+      renderMissionTiles,
+      selectedMission,
+      summary,
+    } = this;
 
     return html`
       <h1>Mission Select</h1>
-      <div id="missions">${availableMissions.map(renderMissionTile)}</div>
+      <div id="missions">
+        ${until(renderMissionTiles(availableMissions), renderLoader)}
+      </div>
       <mwc-button
         label="Confirm"
         raised
@@ -51,17 +56,24 @@ export class MissionSelectPage extends LitElement {
       ></mwc-button>
     `;
   }
-  private renderMissionTile(mission: Mission): TemplateResult {
+  private renderLoader(): TemplateResult {
+    return html`<span>Loading...</span>`;
+  }
+  private async renderMissionTiles(
+    missions: Promise<Mission[]>,
+  ): Promise<TemplateResult[]> {
     const { selectedMission } = this;
 
-    return html`
-      <mission-card
-        @click=${() => {
-          this.selectedMission = mission.type;
-        }}
-        .mission=${mission}
-        ?selected=${mission.type === selectedMission}
-      ></mission-card>
-    `;
+    return (await missions).map(
+      (mission) => html`
+        <mission-card
+          @click=${() => {
+            this.selectedMission = mission.type;
+          }}
+          .mission=${mission}
+          ?selected=${mission.type === selectedMission}
+        ></mission-card>
+      `,
+    );
   }
 }

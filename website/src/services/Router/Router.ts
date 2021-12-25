@@ -11,10 +11,10 @@ type Callback = (route: Route) => void;
  * @returns
  */
 function lookupRoute(_path: string): Route | undefined {
-  return Routes.find(({ path }) => path === _path);
+  return Routes.find(({ pattern }) => pattern.exec(_path));
 }
 
-export class Router {
+class Router {
   private callbacks: Record<string, Callback> = {};
   private proxy: { currentRoute: Route };
 
@@ -57,17 +57,31 @@ export class Router {
       this.changeRoute('/');
       return;
     }
-    this.proxy.currentRoute = route;
-
     try {
       const promise = route.module();
       document.title = route.title;
       await promise;
-      window.history.pushState({}, route.title, route.path);
+      window.history.pushState({}, route.title, path);
+      this.proxy.currentRoute = route;
     } catch {
       // Bounce the user back to the home page when the route is improperly parsed
       this.changeRoute(GameHubRoute.path);
     }
+  }
+  /**
+   * Parses the current URL search parameter into an Object of key:value pairs, ignores any pairs that do not have a
+   * non-empty string for both key and value.
+   * @returns
+   */
+  getSearchFields(): Record<string, string> {
+    return window.location.search
+      .substring(1)
+      .split('&')
+      .reduce((acc, pair) => {
+        const [key, value] = pair.split('=');
+        if (key && value) acc[key] = value;
+        return acc;
+      }, {} as Record<string, string>);
   }
   /**
    * Allows watching for changes to the currently loaded route.

@@ -6,7 +6,6 @@ import styles from './styles';
 @customElement('splash-screen')
 export class SplashScreen extends LitElement {
   static readonly styles = [styles];
-
   @property({ type: Object }) loading: { complete: number; total: number } = {
     complete: 0,
     total: 0,

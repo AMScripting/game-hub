@@ -5,6 +5,7 @@ import SpaceGame from '../../games/SpaceGame/summary';
 export const route: Route = {
   module: () => import('./MissionSelect'),
   path: `/${SpaceGame.name}/mission/select`,
+  pattern: /^\/[a-zA-Z0-9]+\/mission\/select[/]?$/,
   render: html`<mission-select-page
     .summary=${SpaceGame}
   ></mission-select-page>`,
