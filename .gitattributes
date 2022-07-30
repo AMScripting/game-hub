@@ -1,0 +1,7 @@
+* text=auto eol=lf
+
+# Yarn
+/.yarn/releases/** binary
+/.yarn/plugins/** binary
+yarn.lock linguist-generated=true
+/.yarn/** linguist-generated=true

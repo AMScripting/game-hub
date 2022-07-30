@@ -10,7 +10,7 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   nodeResolve,
 
   /** Test files to run */
-  files: '**/*.test.ts',
+  files: 'src/**/*.test.ts',
 
   /** Filter out lit dev mode logs */
   filterBrowserLogs(log) {

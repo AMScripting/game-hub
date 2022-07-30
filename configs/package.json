@@ -1,0 +1,7 @@
+{
+  "name": "@amscripting/configs",
+  "description": "Shared configuration files",
+  "license": "MIT",
+  "version": "0.0.0",
+  "private": true
+}

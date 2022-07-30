@@ -14,5 +14,25 @@
   "bugs": {
     "url": "https://github.com/AMScripting/game-hub/issues"
   },
-  "homepage": "https://github.com/AMScripting/game-hub#readme"
+  "homepage": "https://github.com/AMScripting/game-hub#readme",
+  "workspaces": [
+    "configs",
+    "functions",
+    "website"
+  ],
+  "engines": {
+    "node": ">=16.10",
+    "yarn": "^3.2.1"
+  },
+  "packageManager": "yarn@3.2.1",
+  "private": true,
+  "scripts": {
+    "lint": "yarn workspace @amscripting/game-hub lint",
+    "prepare": "husky install",
+    "start": "yarn workspace @amscripting/game-hub start",
+    "test": "yarn workspace @amscripting/game-hub test"
+  },
+  "devDependencies": {
+    "husky": "~8.0"
+  }
 }

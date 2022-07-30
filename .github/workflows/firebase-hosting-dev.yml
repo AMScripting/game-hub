@@ -15,7 +15,7 @@ jobs:
       - name: build
         run: |
           yarn install --frozen-lockfile
-          npm run build
+          yarn run build
         working-directory: ./website
       - name: deploy
         uses: FirebaseExtended/action-hosting-deploy@v0

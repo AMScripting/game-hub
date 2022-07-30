@@ -18,7 +18,7 @@ export class AppShell extends LitElement {
   connectedCallback() {
     super.connectedCallback?.();
     this.watcher = Router.watch((route: Route) => {
-      this.route = route;
+      this.route = { ...route };
       ({
         footer: this.footer,
         header: this.header,

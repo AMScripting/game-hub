@@ -1,0 +1,24 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    },
+    {
+      "path": "../website"
+    },
+    {
+      "path": "../functions"
+    },
+    {
+      "path": "../configs"
+    }
+  ],
+  "settings": {
+    "files.associations": {
+      "/Config": "perl",
+      "*.css": "postcss"
+    },
+    "typescript.tsdk": "GameHub/.yarn/sdks/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": false
+  }
+}

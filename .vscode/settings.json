@@ -1,0 +1,40 @@
+{
+  "search.exclude": {
+    "**/.yarn": true,
+    "yarn.lock": true,
+    "**/.pnp.*": true
+  },
+  "eslint.nodePath": ".yarn/sdks",
+  "files.associations": {
+    "/Config": "perl",
+    "*.css": "postcss"
+  },
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+  "prettier.requireConfig": true,
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.options": {
+    "extensions": [
+      ".js",
+      ".md",
+      ".mdx",
+      ".ts"
+    ]
+  }
+}

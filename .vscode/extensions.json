@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "arcanis.vscode-zipfs",
+    "editorconfig.editorconfig",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "deque-systems.vscode-axe-linter",
+    "runem.lit-plugin",
+    "streetsidesoftware.code-spell-checker",
+    "silvenon.mdx",
+    "stylelint.vscode-stylelint",
+    "csstools.postcss",
+    "bierner.lit-html"
+  ]
+}

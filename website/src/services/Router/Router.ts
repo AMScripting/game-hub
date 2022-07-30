@@ -1,6 +1,7 @@
-import GameHubRoute from '../../pages/Hub/routes';
-import { Route, Routes } from '../../models/Route';
-import UUID from '../../utils/UUID';
+import { Route } from '../../models/Route';
+import { UUID } from '../../utils/UUID';
+import HubRoute from '../../pages/Hub/routes';
+import Routes from './Routes';
 
 type Callback = (route: Route) => void;
 
@@ -10,19 +11,19 @@ type Callback = (route: Route) => void;
  * @param _path
  * @returns
  */
-function lookupRoute(_path: string): Route | undefined {
+export function lookupRoute(_path: string): Route | undefined {
   return Routes.find(({ pattern }) => pattern.exec(_path));
 }
-
-class Router {
+export class Router {
   private callbacks: Record<string, Callback> = {};
   private proxy: { currentRoute: Route };
 
   constructor() {
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
     // Initialize the route the app was loaded on, and establish the watcher logic
     this.proxy = new Proxy(
-      { currentRoute: lookupRoute(window.location.pathname) || GameHubRoute },
+      { currentRoute: lookupRoute(window.location.pathname) || HubRoute },
       {
         set(obj: Router['proxy'], prop: keyof Router['proxy'], value) {
           if (prop === 'currentRoute') {
@@ -65,7 +66,7 @@ class Router {
       this.proxy.currentRoute = route;
     } catch {
       // Bounce the user back to the home page when the route is improperly parsed
-      this.changeRoute(GameHubRoute.path);
+      this.changeRoute(HubRoute.path);
     }
   }
   /**
@@ -98,4 +99,3 @@ class Router {
     };
   }
 }
-export default new Router();
