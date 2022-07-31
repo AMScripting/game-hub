@@ -7,7 +7,7 @@ import styles from './styles';
 @customElement('settings-page')
 export class SettingsPage extends LitElement {
   static readonly styles = [styles];
-  @state() private page: string = 'menu';
+  @state() private page = 'menu';
   @property({ type: Object }) summary: GameSummary;
 
   connectedCallback() {

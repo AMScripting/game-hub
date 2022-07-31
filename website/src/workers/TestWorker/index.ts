@@ -1,6 +1,7 @@
+// eslint-disable-next-line import/no-unresolved
 import { DataWorker } from '../DataWorkerClass.js';
 
-export default class TestWorker extends DataWorker<Object, Object> {
+export default class TestWorker extends DataWorker<string, string> {
   constructor() {
     super('game-data', '/src/workers/TestWorker/worker.js');
   }

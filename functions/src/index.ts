@@ -1,4 +1,7 @@
-import * as functions from "firebase-functions";
+import { setup } from '../../.pnp.cjs';
+import * as functions from 'firebase-functions';
+
+setup();
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript

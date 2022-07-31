@@ -1,33 +1,15 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    // "allowSyntheticDefaultImports": false,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "incremental": true,
-    "lib": ["esnext", "es2017", "dom"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "resolveJsonModule": true,
+    "lib": ["DOM", "WebWorker"],
     "rootDir": ".",
-    "target": "esnext",
-
-    // Typing
-    "alwaysStrict": true,
-    "checkJs": true,
-    "noImplicitThis": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "strictPropertyInitialization": false,
-    "useDefineForClassFields": true,
 
     // Dev stuff
     "inlineSources": true,
     "sourceMap": true,
-    "types": ["node", "mocha"],
   },
+  "include": [
+    "**/*.ts"
+  ],
   "exclude": ["coverage"],
-  "include": ["**/*.ts"]
+  "extends": "../configs/tsconfig.json"
 }

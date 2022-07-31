@@ -46,7 +46,7 @@ class MissionWorker extends DataWorker<MissionSchema, WorkerSchema> {
   }: MessageEvent<WorkerSchema>) {
     switch (task) {
       case WorkerTask.GenerateMap:
-        this.startMission(parameters[0] as Mission);
+        this.startMission(parameters[0] as unknown as Mission);
         break;
       default:
     }
@@ -102,19 +102,18 @@ class MissionWorker extends DataWorker<MissionSchema, WorkerSchema> {
     mission: Mission,
     status = MissionStatus.Completed,
   ): Promise<Mission> {
-    let updatedMission: Mission;
+    const updatedMission: Mission = {
+      endDate: new Date(),
+      ...mission,
+      status,
+    };
     try {
-      updatedMission = {
-        endDate: new Date(),
-        ...mission,
-        status,
-      };
       await (await this.database)?.put(ObjectStore.Missions, updatedMission);
     } catch (e) {
       // eslint-disable-next-line no-console
       console.error('MissionWorker: completeMission', e);
     }
-    return updatedMission!;
+    return updatedMission;
   }
   /**
    * Checks to see if an active mission is in progress, returning the mission data or null if there are no active

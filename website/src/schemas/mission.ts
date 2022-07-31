@@ -1,5 +1,5 @@
 import { DBSchema } from 'idb';
-import Mission, { MissionType } from '../models/Mission';
+import { Mission, MissionType } from '../models/Mission';
 
 export enum ObjectStore {
   AvailableMissions = 'available-missions',

@@ -15,6 +15,8 @@ export async function completeMission(
   mission: Promise<Mission | null>,
   { name }: GameSummary,
 ) {
-  await MissionWorker.completeMission((await mission)!);
+  const _m = await mission;
+  if (!_m) throw new Error('Mission object was null');
+  await MissionWorker.completeMission(_m);
   Router.changeRoute(`/${name}/mission/recap`);
 }

@@ -9,5 +9,4 @@ export const route: Route = {
   render: html`<character-page .summary=${SpaceGame}></character-page>`,
   title: `Character - ${SpaceGame.name}`,
 };
-
 export default route;

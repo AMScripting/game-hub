@@ -1,5 +1,5 @@
 import copy from 'rollup-plugin-copy';
-import esbuild from 'rollup-plugin-esbuild'
+import esbuild from 'rollup-plugin-esbuild';
 import html from '@web/rollup-plugin-html';
 import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
@@ -23,7 +23,7 @@ export default {
         '.ts': 'ts',
         '.js': 'js',
       },
-      target: 'esnext',
+      target: 'ES2020',
       tsconfig: 'tsconfig.build.json',
     }),
     /** Enable using HTML as rollup entrypoint */
@@ -38,8 +38,11 @@ export default {
     copy({
       targets: [
         { src: 'global.css', dest: 'dist' },
-        { src: 'node_modules/open-props/**/*.min.css', dest: 'dist/node_modules/open-props' },
-      ]
+        {
+          src: 'node_modules/open-props/**/*.min.css',
+          dest: 'dist/node_modules/open-props',
+        },
+      ],
     }),
   ],
 };
