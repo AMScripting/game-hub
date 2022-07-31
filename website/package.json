@@ -22,8 +22,7 @@
   "dependencies": {
     "@material/mwc-button": "~0.26",
     "idb": "~7.0",
-    "lit": "~2.2",
-    "open-props": "~1.4"
+    "lit": "~2.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "~0.6",

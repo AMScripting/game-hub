@@ -2,11 +2,15 @@ import { css } from 'lit';
 
 export const styles = css`
   :host {
-    position: relative;
+    position: absolute;
     display: grid;
     background-color: var(--surface1);
     width: 100vw;
     height: 100vh;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
 
     grid-template-columns: var(--size-fluid-9) auto;
     grid-template-rows: var(--size-fluid-6) auto var(--size-fluid-6);

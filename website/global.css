@@ -1,5 +1,5 @@
-@import './node_modules/open-props/open-props.min.css';
-@import './node_modules/open-props/normalize.min.css';
+@import 'https://unpkg.com/open-props@1.4.5/open-props.min.css';
+@import 'https://unpkg.com/open-props@1.4.5/normalize.min.css';
 
 html {
   /** Light **/
